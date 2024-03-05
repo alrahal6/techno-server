@@ -47,7 +47,7 @@
                                                 {{ __('Channel') }}
                                             </x-dropdown-link>
                         
-                        <x-dropdown-link :href="route('daymonth.index')">
+                        <x-dropdown-link :href="route('day_months.index')">
                                                 {{ __('Day Month') }}
                                             </x-dropdown-link>
                         
@@ -55,39 +55,39 @@
                                                 {{ __('Year') }}
                                             </x-dropdown-link>
                         
-                        <x-dropdown-link :href="route('loadlimits.index')">
+                        <x-dropdown-link :href="route('load_limits.index')">
                                                 {{ __('Load Limit') }}
                                             </x-dropdown-link>
                         
-                        <x-dropdown-link :href="route('maxcurrent.index')">
+                        <x-dropdown-link :href="route('max_currents.index')">
                                                 {{ __('Max Current') }}
                                             </x-dropdown-link>
                         
-                        <x-dropdown-link :href="route('meterlocation.index')">
+                        <x-dropdown-link :href="route('meter_locations.index')">
                                                 {{ __('Meter Location') }}
                                             </x-dropdown-link>
                         
-                        <x-dropdown-link :href="route('monthlytariff.index')">
+                        <x-dropdown-link :href="route('monthly_tariffs.index')">
                                                 {{ __('Monthly Tariff ') }}
                                             </x-dropdown-link>
                         
-                        <x-dropdown-link :href="route('monthlywhatt.index')">
+                        <x-dropdown-link :href="route('monthly_whatts.index')">
                                                 {{ __('Monthly Whatt') }}
                                             </x-dropdown-link>
                         
-                        <x-dropdown-link :href="route('overload.index')">
+                        <x-dropdown-link :href="route('overload_delay_times.index')">
                                                 {{ __('OverLoad Delay Time') }}
                                             </x-dropdown-link>
                         
-                        <x-dropdown-link :href="route('todone.index')">
+                        <x-dropdown-link :href="route('tod_ones.index')">
                                                 {{ __('TOD One') }}
                                             </x-dropdown-link>
                         
-                        <x-dropdown-link :href="route('todtwo.index')">
+                        <x-dropdown-link :href="route('tod_twos.index')">
                                                 {{ __('TOD Two') }}
                                             </x-dropdown-link>
                         
-                        <x-dropdown-link :href="route('unbalance.index')">
+                        <x-dropdown-link :href="route('unbalance_currents.index')">
                                                 {{ __('Unbalance Current') }}
                                             </x-dropdown-link>
                     

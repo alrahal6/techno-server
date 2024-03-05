@@ -50,16 +50,16 @@ Route::middleware('auth')->group(function () {
     Route::resource('/admins', AdminsController::class); 
     Route::resource('/adminlocation', Admin_locationsController::class); 
     Route::resource('/channels', ChannelsController::class); 
-    Route::resource('/daymonth', Day_monthsController::class); 
-    Route::resource('/loadlimits', Load_limitsController::class); 
-    Route::resource('/maxcurrent', Max_currentsController::class); 
-    Route::resource('/meterlocation', Meter_locationsController::class); 
-    Route::resource('/monthlytariff', Monthly_tariffsController::class); 
-    Route::resource('/monthlywhatt', Monthly_whattsController::class); 
-    Route::resource('/overload', Overload_delay_timesController::class); 
-    Route::resource('/todone', Tod_onesController::class); 
-    Route::resource('/todtwo', Tod_twosController::class); 
-    Route::resource('/unbalance', Unbalance_currentsController::class); 
+    Route::resource('/day_months', Day_monthsController::class); 
+    Route::resource('/load_limits', Load_limitsController::class); 
+    Route::resource('/max_currents', Max_currentsController::class); 
+    Route::resource('/meter_locations', Meter_locationsController::class); 
+    Route::resource('/monthly_tariffs', Monthly_tariffsController::class); 
+    Route::resource('/monthly_whatts', Monthly_whattsController::class); 
+    Route::resource('/overload_delay_times', Overload_delay_timesController::class); 
+    Route::resource('/tod_ones', Tod_onesController::class); 
+    Route::resource('/tod_twos', Tod_twosController::class); 
+    Route::resource('/unbalance_currents', Unbalance_currentsController::class); 
     Route::resource('/years', YearsController::class);
 
 });
