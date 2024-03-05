@@ -12,10 +12,7 @@
 
 	{!! Form::open(['route' => 'locations.store']) !!}
 
-		<div class="mb-3">
-			{{ Form::label('id', 'Id', ['class'=>'form-label']) }}
-			{{ Form::text('id', null, array('class' => 'form-control')) }}
-		</div>
+		
 		<div class="mb-3">
 			{{ Form::label('locationname', 'Locationname', ['class'=>'form-label']) }}
 			{{ Form::text('locationname', null, array('class' => 'form-control')) }}

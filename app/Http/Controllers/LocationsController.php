@@ -39,7 +39,7 @@ class LocationsController extends Controller
     public function store(LocationRequest $request)
     {
         $location = new Location;
-		$location->id = $request->input('id');
+		//$location->id = $request->input('id');
 		$location->locationname = $request->input('locationname');
 		$location->address = $request->input('address');
 		$location->lat = $request->input('lat');
@@ -83,7 +83,7 @@ class LocationsController extends Controller
     public function update(LocationRequest $request, $id)
     {
         $location = Location::findOrFail($id);
-		$location->id = $request->input('id');
+		//$location->id = $request->input('id');
 		$location->locationname = $request->input('locationname');
 		$location->address = $request->input('address');
 		$location->lat = $request->input('lat');

@@ -13,10 +13,6 @@
 	{{ Form::model($location, array('route' => array('locations.update', $location->id), 'method' => 'PUT')) }}
 
 		<div class="mb-3">
-			{{ Form::label('id', 'Id', ['class'=>'form-label']) }}
-			{{ Form::text('id', null, array('class' => 'form-control')) }}
-		</div>
-		<div class="mb-3">
 			{{ Form::label('locationname', 'Locationname', ['class'=>'form-label']) }}
 			{{ Form::text('locationname', null, array('class' => 'form-control')) }}
 		</div>

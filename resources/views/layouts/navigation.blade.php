@@ -6,7 +6,8 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                    <img src="{{ asset('logo.png') }}" alt="Technometers">
+                        <!--<x-application-logo class="block h-9 w-auto fill-current text-gray-800" />-->
                     </a>
                 </div>
 
@@ -17,10 +18,92 @@
                     </x-nav-link>
                 </div>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('locations.index')" :active="request()->routeIs('locations')">
+                <div class="hidden space-x-8 sm:-my-px sm:items-center  sm:flex">
+                    <!--<x-nav-link :href="route('locations.index')" :active="request()->routeIs('locations')">
                         {{ __('Location') }}
-                    </x-nav-link>
+                    </x-nav-link>-->
+                    <x-dropdown align="right" width="48">
+                    <x-slot name="trigger">
+                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                            <div>Admin</div>
+
+                            <div class="ms-1">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                        </button>
+                    </x-slot>
+
+                    <x-slot name="content">
+                        <x-dropdown-link :href="route('locations.index')">
+                            {{ __('Admin') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('locations.index')">
+                                                {{ __('Admin Location') }}
+                                            </x-dropdown-link>
+                        
+                        <x-dropdown-link :href="route('channels.index')">
+                                                {{ __('Channel') }}
+                                            </x-dropdown-link>
+                        
+                        <x-dropdown-link :href="route('daymonth.index')">
+                                                {{ __('Day Month') }}
+                                            </x-dropdown-link>
+                        
+                        <x-dropdown-link :href="route('years.index')">
+                                                {{ __('Year') }}
+                                            </x-dropdown-link>
+                        
+                        <x-dropdown-link :href="route('loadlimits.index')">
+                                                {{ __('Load Limit') }}
+                                            </x-dropdown-link>
+                        
+                        <x-dropdown-link :href="route('maxcurrent.index')">
+                                                {{ __('Max Current') }}
+                                            </x-dropdown-link>
+                        
+                        <x-dropdown-link :href="route('meterlocation.index')">
+                                                {{ __('Meter Location') }}
+                                            </x-dropdown-link>
+                        
+                        <x-dropdown-link :href="route('monthlytariff.index')">
+                                                {{ __('Monthly Tariff ') }}
+                                            </x-dropdown-link>
+                        
+                        <x-dropdown-link :href="route('monthlywhatt.index')">
+                                                {{ __('Monthly Whatt') }}
+                                            </x-dropdown-link>
+                        
+                        <x-dropdown-link :href="route('overload.index')">
+                                                {{ __('OverLoad Delay Time') }}
+                                            </x-dropdown-link>
+                        
+                        <x-dropdown-link :href="route('todone.index')">
+                                                {{ __('TOD One') }}
+                                            </x-dropdown-link>
+                        
+                        <x-dropdown-link :href="route('todtwo.index')">
+                                                {{ __('TOD Two') }}
+                                            </x-dropdown-link>
+                        
+                        <x-dropdown-link :href="route('unbalance.index')">
+                                                {{ __('Unbalance Current') }}
+                                            </x-dropdown-link>
+                    
+    
+    
+
+                        <x-dropdown-link :href="route('locations.index')">
+                            {{ __('Location') }}
+                        </x-dropdown-link>
+
+                        <!-- Authentication -->
+                        <x-dropdown-link :href="route('meters.index')">
+                            {{ __('Meter') }}
+                        </x-dropdown-link>
+                    </x-slot>
+                </x-dropdown>
                 </div>
             </div>
 
