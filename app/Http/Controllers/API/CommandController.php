@@ -60,7 +60,7 @@ class CommandController extends Controller
             if (isset($data['device_id'])) {
                 $deviceId = $data['device_id'];
                 if (mysqli_connect_errno()) {
-                    echo "Failed to connect with database" . mysqli_connect_err();
+                    echo "Failed to connect with database" . mysqli_connect_error();
                 }
 
                 $sql = "select * from login where deviceId = '".$deviceId."' limit 1 ";
@@ -97,7 +97,7 @@ class CommandController extends Controller
                 and isset($data['flag']) and isset($data['value'])) {
 
                 if (mysqli_connect_errno()) {
-                    echo "Failed to connect with database" . mysqli_connect_err();
+                    echo "Failed to connect with database" . mysqli_connect_error();
                 }
                 $cmd = str_replace(' ','',$data['command']);
 
@@ -127,7 +127,7 @@ class CommandController extends Controller
             if (isset($data['meter'])) {
                 $deviceId = $data['meter'];
                 if (mysqli_connect_errno()) {
-                    echo "Failed to connect with database" . mysqli_connect_err();
+                    echo "Failed to connect with database" . mysqli_connect_error();
                 }
 
                 $sql = "select * from meter_commands where meter = '".$deviceId."'  and flag = 0 ";
@@ -163,7 +163,7 @@ class CommandController extends Controller
             if (isset($data['id'])) {
                 $id = $data['id'];
                 if (mysqli_connect_errno()) {
-                    echo "Failed to connect with database" . mysqli_connect_err();
+                    echo "Failed to connect with database" . mysqli_connect_error();
                 }
 
                 $sql = "update meter_commands set flag = 1 where id = '".$id."' ";
@@ -202,10 +202,9 @@ class CommandController extends Controller
                 and isset($data['flag']) and isset($data['value'])) {
 
                 if (mysqli_connect_errno()) {
-                    echo "Failed to connect with database" . mysqli_connect_err();
+                    echo "Failed to connect with database" . mysqli_connect_error();
                 }
                 
-
                 $sql = "INSERT INTO `techno_spa_integration` (`Line_No`, `Catogery`, `Record_datetime`, `Meter_No`, 
                 `Channel_No`, `Pole_No`, `Sub_St_Date`, `Sub_End_Date`, 
                 `Pkg_Watts`, `Duration`, `Pkg_St_Time`, `Pkg_End_Time`, 
@@ -239,4 +238,58 @@ class CommandController extends Controller
     {
         //
     }
+
+    public function saveUserValue() 
+    {
+        $response = array();
+        if($_SERVER['REQUEST_METHOD']=='POST') {
+            $data = json_decode(file_get_contents('php://input'), true);
+            //var_dump($data);
+            $meter = $data['meter_id'];
+            $channel = $data['channel_id'];
+            $item = $data['item_id'];
+            $value = $data['value'];
+
+            if(isset($meter) and isset($channel)
+                and isset($item) and isset($value)) {
+                 
+                if (mysqli_connect_errno()) {
+                    echo "Failed to connect with database" . mysqli_connect_error();
+                }
+                
+                $this->prepareAndSaveCommand($meter,$channel,$item,$value); 
+                
+                   
+                
+            }
+        }
+        return response()->json($response);
+
+    }
+
+    private function saveEntry($meter,$channel,$item,$value) {
+        $sql = "INSERT INTO `entry_values` (`meter_id`, `channel`, `entry_item_id`, `item_value`)
+                VALUES ('".$meter."','".$channel."','".$item."','".$value."')"; 
+
+                if($r = mysqli_query($this->db, $sql)) {
+                    $response = $r;
+        }
+    }
+
+
+    private function prepareAndSaveCommand($meter,$channel,$item,$value) {
+        // switch to appropriate item
+        // prepare command
+        // save command
+    }
+
+    private function saveCommand($meter,$command, $flag = "0") {
+        $sql = "INSERT INTO `meter_commands` (`meter`, `command`, `flag`)
+                VALUES ('".$meter."','".$command."','".$flag."')"; 
+
+                if($r = mysqli_query($this->db, $sql)) {
+                    $response = $r;
+        }
+    }
+
 }
