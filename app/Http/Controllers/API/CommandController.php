@@ -278,20 +278,50 @@ class CommandController extends Controller
 
 
     private function prepareAndSaveCommand($meter,$channel,$item,$value) {
-
+        // switch to appropriate item
         switch($item) {
             case 1:
-                //code to be executed if fruit=apple;
+                //day_month
                 break;
             case 2:
-                //code to be executed if fruit=banana;
+                //year
                 break;
-        
-              default:
-                //code to be executed
+            case 3:
+                //load_limit
+                break;
+            case 4:
+                //max_current
+                break;
+            case 5:
+                //monthly_tariff
+                break;
+            case 6:
+                //monthly_watts
+                break;
+            case 7:
+                //overload_delay_time
+                break;
+            case 8:
+                //tod_one_start
+                break;
+            case 9:
+                //tod_one_end
+                break;
+            case 10:
+                //tod_two_start
+                break;
+            case 11:
+                //tod_two_end
+                break;
+            case 12:
+                //unbalance_current
+                break;
+            default:
+                //
         }
-        // switch to appropriate item
+        
         // prepare command
+        
         // save command
     }
 
