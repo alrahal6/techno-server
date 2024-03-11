@@ -278,6 +278,18 @@ class CommandController extends Controller
 
 
     private function prepareAndSaveCommand($meter,$channel,$item,$value) {
+
+        switch($item) {
+            case 1:
+                //code to be executed if fruit=apple;
+                break;
+            case 2:
+                //code to be executed if fruit=banana;
+                break;
+        
+              default:
+                //code to be executed
+        }
         // switch to appropriate item
         // prepare command
         // save command
