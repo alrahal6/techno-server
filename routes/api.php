@@ -20,6 +20,7 @@ Route::post('/login.php', [CommandController::class, 'login'])->name('command');
 Route::post('/commands.php', [CommandController::class, 'store'])->name('store');
 Route::post('/fetch.php', [CommandController::class, 'metercmd'])->name('metercmd');
 Route::post('/update.php',[CommandController::class, 'meterupdcmd'])->name('meterupdcmd');
+Route::post('/savecmd.php',[CommandController::class,'saveuservalue'])->name('saveuservalue');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
