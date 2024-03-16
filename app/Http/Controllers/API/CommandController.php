@@ -343,11 +343,11 @@ class CommandController extends Controller
 
 
     private function entryDayMonth($channel,$value) {
-        return "askjdhg";
+        return $this->getSubEndDtCommand($channel,$value);
     }
 
     private function entryYear($channel,$value) {
-        return "askjdhg";
+        return $this->getSubEndYrCommand($channel,$value);
     }
 
     private function entryLoadLimit($channel,$value) {
@@ -371,11 +371,11 @@ class CommandController extends Controller
     }
 
     private function entryTodOneStart($channel,$value) {
-        return "askjdhg";
+        return $this->getPkgStTimeCommand($channel,$value);
     }
 
     private function entryTodOneEnd($channel,$value) {
-        return "askjdhg";
+        return  $this->getPkgEdTimeCommand($channel,$value);
     }
 
     private function entryTodTwoStart($channel,$value) {
@@ -434,6 +434,29 @@ class CommandController extends Controller
     }
 
     private function getPkgEdTimeCommand($time,$ch) {
+        if(!$ch) {
+            return "";
+        }
+        $this->setTodWriteString($ch);
+        if($this->todWrTwo) {
+            return  $this->todWrTwo." ".$this->valueAndCrc($this->todWrTwo,$time);
+        }
+        //return $pkgEdTime;
+    }
+
+    private function getPkgTwoStTimeCommand($time,$ch) {
+        //setTodWriteString
+        if(!$ch) {
+            return "";
+        }
+        $this->setTodWriteString($ch);
+        if($this->todWrOne) {
+            return  $this->todWrOne." ".$this->valueAndCrc($this->todWrOne,$time);
+        }
+        return "";
+    }
+
+    private function getPkgTwoEdTimeCommand($time,$ch) {
         if(!$ch) {
             return "";
         }
