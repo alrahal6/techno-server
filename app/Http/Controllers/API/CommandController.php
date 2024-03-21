@@ -259,21 +259,14 @@ class CommandController extends Controller
                 if (mysqli_connect_errno()) {
                     echo "Failed to connect with database" . mysqli_connect_error();
                 }
-                $this->saveEntry($meter,$channel,$item,$value);
+                $this->commandGenerator->saveEntry($meter,$channel,$item,$value);
                 $this->prepareAndSaveCommand($meter,$channel,$item,$value); 
             }
         }
         return response()->json($response);
     }
     
-    private function saveEntry($meter,$channel,$item,$value) {
-        $sql = "INSERT INTO `entry_values` (`meter_id`, `channel`, `entry_item_id`, `item_value`)
-                VALUES ('".$meter."','".$channel."','".$item."','".$value."')"; 
-
-                if($r = mysqli_query($this->db, $sql)) {
-                    $response = $r;
-        }
-    }
+    
 
 
     private function prepareAndSaveCommand($meter,$channel,$item,$value) {
@@ -310,29 +303,29 @@ class CommandController extends Controller
                 break;
             case 8:
                 //tod_one_start
-                $command = $this->entryTodOneStart($channel,$value);
+                $command = $this->commandGenerator->entryTodOneStart($channel,$value);
                 break;
             case 9:
                 //tod_one_end
-                $command = $this->entryTodOneEnd($channel,$value);
+                $command = $this->commandGenerator->entryTodOneEnd($channel,$value);
                 break;
             case 10:
                 //tod_two_start
-                $command = $this->entryTodTwoStart($channel,$value);
+                $command = $this->commandGenerator->entryTodTwoStart($channel,$value);
                 break;
             case 11:
                 //tod_two_end
-                $command = $this->entryTodTwoEnd($channel,$value);
+                $command = $this->commandGenerator->entryTodTwoEnd($channel,$value);
                 break;
             case 12:
                 //unbalance_current
-                $command = $this->entryUnbalanceCurrent($channel,$value);
+                $command = $this->commandGenerator->entryUnbalanceCurrent($channel,$value);
                 break;
             default:
             $command = "";
                 //
         }
-        $this->saveCommand($meter,$command);
+        $this->commandGenerator->saveCommand($meter,$command);
     }
 
     

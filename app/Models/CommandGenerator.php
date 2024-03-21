@@ -27,18 +27,12 @@ class CommandGenerator {
     public function entryMaxCurrent($channel,$value) {
         return "askjdhg";
     }
-
-    public function entryMonthlyTariff($channel,$value) {
-        return "askjdhg";
-    }
-
+    
     public function entryMonthlyWatts($channel,$value) {
         return str_replace(" ", "",$this->getWattsCommand($value,$channel));
     }
 
-    public function entryOverloadDelayTime($channel,$value) {
-        return "askjdhg";
-    }
+    
 
     public function entryTodOneStart($channel,$value) {
         return $this->getPkgStTimeCommand($channel,$value);
@@ -55,10 +49,21 @@ class CommandGenerator {
     public function entryTodTwoEnd($channel,$value) {
         return $this->getPkgTwoEdTimeCommand($value,$channel);
     }
+    
+    // common entries
+    public function entryMonthlyTariff($channel,$value) {
+        return "askjdhg";
+    }
+
+    public function entryOverloadDelayTime($channel,$value) {
+        return "askjdhg";
+    }
 
     public function entryUnbalanceCurrent($channel,$value) {
         return $this->getUnbalanceCurrent($value,$channel);
     }
+
+
 
     private function getUnbalanceCurrent($value,$channel) {
         $this->setChannelHexa($channel);
@@ -305,7 +310,7 @@ class CommandGenerator {
         return sprintf('%04X', $crc);
     }
 
-    private function saveCommand($meter,$command, $flag = "0") {
+    public function saveCommand($meter,$command, $flag = "0") {
         $sql = "INSERT INTO `meter_commands` (`meter`, `command`, `flag`)
                 VALUES ('".$meter."','".$command."','".$flag."')"; 
 
@@ -314,5 +319,38 @@ class CommandGenerator {
         }
     }
 
+    public function saveEntry($meter,$channel,$item,$value) {
+        $sql = "INSERT INTO `entry_values` (`meter_id`, `channel`, `entry_item_id`, `item_value`)
+                VALUES ('".$meter."','".$channel."','".$item."','".$value."')"; 
+
+                if($r = mysqli_query($this->db, $sql)) {
+                    $response = $r;
+        }
+    }
+
+    public function updateEntry($meter,$channel,$item,$value) {
+        /*$sql = "INSERT INTO `entry_values` (`meter_id`, `channel`, `entry_item_id`, `item_value`)
+                VALUES ('".$meter."','".$channel."','".$item."','".$value."')"; */
+        $sql = "UPDATE `entry_values` SET `item_value` = '".$value."'
+        WHERE `meter_id` =  '".$meter."' and `channel` =  '".$channel."' 
+        and `entry_item_id` =  '".$item."'";
+        //echo $sql;
+        //exit;
+                if($r = mysqli_query($this->db, $sql)) {
+                    $response = $r;
+        }
+    }
+
+    public function deleteEntry($meter,$channel,$item) {
+        /*$sql = "INSERT INTO `entry_values` (`meter_id`, `channel`, `entry_item_id`, `item_value`)
+                VALUES ('".$meter."','".$channel."','".$item."','".$value."')";*/ 
+    $sql = "DELETE FROM entry_values WHERE  `meter_id` =  '".$meter."' 
+    and `channel` =  '".$channel."' 
+    and `entry_item_id` =  '".$item."'";
+                if($r = mysqli_query($this->db, $sql)) {
+                    $response = $r;
+        }
+    }
+    
 
 }
