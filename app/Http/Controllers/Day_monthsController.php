@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Day_month;
 use App\Http\Requests\Day_monthRequest;
+use App\Models\Channel;
+use App\Models\Meter;
 
 class Day_monthsController extends Controller
 {
@@ -28,7 +30,9 @@ class Day_monthsController extends Controller
      */
     public function create()
     {
-        return view('day_months.create');
+        $meters = Meter::all()->pluck('meter_number','id');
+        $channels = Channel::all()->pluck('channel','id');
+        return view('day_months.create',['meters'=>$meters,'channels' => $channels]);
     }
 
     /**

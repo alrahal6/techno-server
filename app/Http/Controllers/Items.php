@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Meter;
+
 class Items {
 
     // @TODO fetch from database
