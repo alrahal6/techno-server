@@ -27,7 +27,8 @@ class Monthly_whattsController extends Controller
      */
     public function create()
     {
-        return view('monthly_whatts.create');
+        return view('monthly_whatts.create',
+        ['meters'=>Items::getMeter(),'channels' => Items::getChannel()]);
     }
 
     /**
@@ -68,7 +69,8 @@ class Monthly_whattsController extends Controller
     public function edit($id)
     {
         $monthly_whatt = Monthly_whatt::findOrFail($id);
-        return view('monthly_whatts.edit',['monthly_whatt'=>$monthly_whatt]);
+        return view('monthly_whatts.edit',['monthly_whatt'=>$monthly_whatt],
+        ['meters'=>Items::getMeter(),'channels' => Items::getChannel()]);
     }
 
     /**

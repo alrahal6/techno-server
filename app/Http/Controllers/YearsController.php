@@ -27,7 +27,8 @@ class YearsController extends Controller
      */
     public function create()
     {
-        return view('years.create');
+        return view('years.create',
+        ['meters'=>Items::getMeter(),'channels' => Items::getChannel()]);
     }
 
     /**
@@ -68,7 +69,8 @@ class YearsController extends Controller
     public function edit($id)
     {
         $year = Year::findOrFail($id);
-        return view('years.edit',['year'=>$year]);
+        return view('years.edit',['year'=>$year],
+        ['meters'=>Items::getMeter(),'channels' => Items::getChannel()]);
     }
 
     /**

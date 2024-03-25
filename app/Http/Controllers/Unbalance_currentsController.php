@@ -27,7 +27,8 @@ class Unbalance_currentsController extends Controller
      */
     public function create()
     {
-        return view('unbalance_currents.create');
+        return view('unbalance_currents.create',
+        ['meters'=>Items::getMeter(),'channels' => Items::getChannel()]);
     }
 
     /**
@@ -68,7 +69,8 @@ class Unbalance_currentsController extends Controller
     public function edit($id)
     {
         $unbalance_current = Unbalance_current::findOrFail($id);
-        return view('unbalance_currents.edit',['unbalance_current'=>$unbalance_current]);
+        return view('unbalance_currents.edit',['unbalance_current'=>$unbalance_current],
+        ['meters'=>Items::getMeter(),'channels' => Items::getChannel()]);
     }
 
     /**

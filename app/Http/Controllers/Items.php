@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Meter;
+use App\Models\Channel;
+
 
 class Items {
 
@@ -19,5 +21,13 @@ class Items {
     static $tod_two_start = 10;
     static $tod_two_end = 11;
     static $unbalance_current = 12;
+
+    public static function getMeter() {
+        return Meter::all()->pluck('meter_number','id');
+    } 
+
+    public static function getChannel() {
+        return Channel::all()->pluck('channel','id');
+    }
 
 }

@@ -27,7 +27,8 @@ class Overload_delay_timesController extends Controller
      */
     public function create()
     {
-        return view('overload_delay_times.create');
+        return view('overload_delay_times.create',
+        ['meters'=>Items::getMeter(),'channels' => Items::getChannel()]);
     }
 
     /**
@@ -68,7 +69,8 @@ class Overload_delay_timesController extends Controller
     public function edit($id)
     {
         $overload_delay_time = Overload_delay_time::findOrFail($id);
-        return view('overload_delay_times.edit',['overload_delay_time'=>$overload_delay_time]);
+        return view('overload_delay_times.edit',['overload_delay_time'=>$overload_delay_time],
+        ['meters'=>Items::getMeter(),'channels' => Items::getChannel()]);
     }
 
     /**

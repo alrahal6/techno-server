@@ -27,7 +27,8 @@ class Monthly_tariffsController extends Controller
      */
     public function create()
     {
-        return view('monthly_tariffs.create');
+        return view('monthly_tariffs.create',
+        ['meters'=>Items::getMeter(),'channels' => Items::getChannel()]);
     }
 
     /**
@@ -68,7 +69,8 @@ class Monthly_tariffsController extends Controller
     public function edit($id)
     {
         $monthly_tariff = Monthly_tariff::findOrFail($id);
-        return view('monthly_tariffs.edit',['monthly_tariff'=>$monthly_tariff]);
+        return view('monthly_tariffs.edit',['monthly_tariff'=>$monthly_tariff],
+        ['meters'=>Items::getMeter(),'channels' => Items::getChannel()]);
     }
 
     /**

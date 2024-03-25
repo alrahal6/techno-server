@@ -328,9 +328,8 @@ class CommandGenerator {
         }
     }
 
-    public function updateEntry($meter,$channel,$item,$value) {
-        /*$sql = "INSERT INTO `entry_values` (`meter_id`, `channel`, `entry_item_id`, `item_value`)
-                VALUES ('".$meter."','".$channel."','".$item."','".$value."')"; */
+    public function updateEntry($meter,$channel,$item,$value,$id) {
+        
         $sql = "UPDATE `entry_values` SET `item_value` = '".$value."'
         WHERE `meter_id` =  '".$meter."' and `channel` =  '".$channel."' 
         and `entry_item_id` =  '".$item."'";
@@ -342,14 +341,12 @@ class CommandGenerator {
     }
 
     public function deleteEntry($meter,$channel,$item) {
-        /*$sql = "INSERT INTO `entry_values` (`meter_id`, `channel`, `entry_item_id`, `item_value`)
-                VALUES ('".$meter."','".$channel."','".$item."','".$value."')";*/ 
-    $sql = "DELETE FROM entry_values WHERE  `meter_id` =  '".$meter."' 
-    and `channel` =  '".$channel."' 
-    and `entry_item_id` =  '".$item."'";
-                if($r = mysqli_query($this->db, $sql)) {
-                    $response = $r;
-        }
+        $sql = "DELETE FROM entry_values WHERE  `meter_id` =  '".$meter."' 
+        and `channel` =  '".$channel."' 
+        and `entry_item_id` =  '".$item."'";
+                    if($r = mysqli_query($this->db, $sql)) {
+                        $response = $r;
+            }
     }
     
 

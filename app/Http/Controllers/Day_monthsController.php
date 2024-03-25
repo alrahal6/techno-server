@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Day_month;
 use App\Http\Requests\Day_monthRequest;
-use App\Models\Channel;
-use App\Models\Meter;
 
 class Day_monthsController extends Controller
 {
@@ -30,9 +28,10 @@ class Day_monthsController extends Controller
      */
     public function create()
     {
-        $meters = Meter::all()->pluck('meter_number','id');
-        $channels = Channel::all()->pluck('channel','id');
-        return view('day_months.create',['meters'=>$meters,'channels' => $channels]);
+        //$meters = Meter::all()->pluck('meter_number','id');
+        //$channels = Channel::all()->pluck('channel','id');
+        return view('day_months.create',
+        ['meters'=>Items::getMeter(),'channels' => Items::getChannel()]);
     }
 
     /**
@@ -80,7 +79,7 @@ class Day_monthsController extends Controller
     public function edit($id)
     {
         $day_month = Day_month::findOrFail($id);
-        return view('day_months.edit',['day_month'=>$day_month]);
+        return view('day_months.edit',['day_month'=>$day_month],['meters'=>Items::getMeter(),'channels' => Items::getChannel()]);
     }
 
     /**
@@ -93,11 +92,8 @@ class Day_monthsController extends Controller
     public function update(Day_monthRequest $request, $id)
     {
         $day_month = Day_month::findOrFail($id);
-		/*$day_month->meter_id = $request->input('meter_id');
-		$day_month->channel = $request->input('channel');
-		$day_month->day = $request->input('day');
-		$day_month->month = $request->input('month');*/
-        $meter = $request->input('meter_id');
+        $this->commandGenerator->deleteEntry($day_month->meter_id,$day_month->channel,Items::$dayMonth);
+		$meter = $request->input('meter_id');
         $channel = $request->input('channel');
         $day = sprintf('%02d',$request->input('day'));
         $month = sprintf('%02d',$request->input('month'));
@@ -108,8 +104,8 @@ class Day_monthsController extends Controller
 		$day_month->day = $day;
 		$day_month->month = $month;
         $day_month->save();
-        $this->commandGenerator->updateEntry($meter,$channel,Items::$dayMonth,$value);
-
+        $this->commandGenerator->saveEntry($meter,$channel,Items::$dayMonth,$value);
+        
         return to_route('day_months.index');
     }
 

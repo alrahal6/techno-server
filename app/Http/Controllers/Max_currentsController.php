@@ -27,7 +27,8 @@ class Max_currentsController extends Controller
      */
     public function create()
     {
-        return view('max_currents.create');
+        return view('max_currents.create',
+        ['meters'=>Items::getMeter(),'channels' => Items::getChannel()]);
     }
 
     /**
@@ -68,7 +69,8 @@ class Max_currentsController extends Controller
     public function edit($id)
     {
         $max_current = Max_current::findOrFail($id);
-        return view('max_currents.edit',['max_current'=>$max_current]);
+        return view('max_currents.edit',['max_current'=>$max_current],
+        ['meters'=>Items::getMeter(),'channels' => Items::getChannel()]);
     }
 
     /**

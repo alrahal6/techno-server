@@ -27,7 +27,8 @@ class Load_limitsController extends Controller
      */
     public function create()
     {
-        return view('load_limits.create');
+        return view('load_limits.create',
+        ['meters'=>Items::getMeter(),'channels' => Items::getChannel()]);
     }
 
     /**
@@ -68,7 +69,8 @@ class Load_limitsController extends Controller
     public function edit($id)
     {
         $load_limit = Load_limit::findOrFail($id);
-        return view('load_limits.edit',['load_limit'=>$load_limit]);
+        return view('load_limits.edit',['load_limit'=>$load_limit],
+        ['meters'=>Items::getMeter(),'channels' => Items::getChannel()]);
     }
 
     /**

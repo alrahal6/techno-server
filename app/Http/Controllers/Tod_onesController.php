@@ -27,7 +27,8 @@ class Tod_onesController extends Controller
      */
     public function create()
     {
-        return view('tod_ones.create');
+        return view('tod_ones.create',
+        ['meters'=>Items::getMeter(),'channels' => Items::getChannel()]);
     }
 
     /**
@@ -69,7 +70,8 @@ class Tod_onesController extends Controller
     public function edit($id)
     {
         $tod_one = Tod_one::findOrFail($id);
-        return view('tod_ones.edit',['tod_one'=>$tod_one]);
+        return view('tod_ones.edit',['tod_one'=>$tod_one],
+        ['meters'=>Items::getMeter(),'channels' => Items::getChannel()]);
     }
 
     /**
