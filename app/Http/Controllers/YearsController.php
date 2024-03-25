@@ -31,6 +31,14 @@ class YearsController extends Controller
         ['meters'=>Items::getMeter(),'channels' => Items::getChannel()]);
     }
 
+    private function saveEntry($request) {
+        $this->commandGenerator->saveEntry($request->input('meter_id'),$request->input('channel'),Items::$year,$request->input('year'));
+    }
+
+    private function deleteEntry($request) {
+        $this->commandGenerator->deleteEntry($request->meter_id,$request->channel,Items::$year);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -44,7 +52,7 @@ class YearsController extends Controller
 		$year->channel = $request->input('channel');
 		$year->year = $request->input('year');
         $year->save();
-
+        $this->saveEntry($request);
         return to_route('years.index');
     }
 
@@ -83,11 +91,12 @@ class YearsController extends Controller
     public function update(YearRequest $request, $id)
     {
         $year = Year::findOrFail($id);
+        $this->deleteEntry($year); 
 		$year->meter_id = $request->input('meter_id');
 		$year->channel = $request->input('channel');
 		$year->year = $request->input('year');
         $year->save();
-
+        $this->saveEntry($request);
         return to_route('years.index');
     }
 
@@ -100,6 +109,7 @@ class YearsController extends Controller
     public function destroy($id)
     {
         $year = Year::findOrFail($id);
+        $this->deleteEntry($year); 
         $year->delete();
 
         return to_route('years.index');

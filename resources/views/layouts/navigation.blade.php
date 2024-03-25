@@ -105,6 +105,13 @@
                     </x-slot>
                 </x-dropdown>
                 </div>
+
+                <!--<div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('logout')" :active="request()->routeIs('logout')">
+                    {{ __('Log Out') }}
+                    </x-nav-link>
+                </div>-->
+
             </div>
 
             <!-- Settings Dropdown -->
@@ -127,7 +134,7 @@
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
-                        <!-- Authentication -->
+                        
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
@@ -159,6 +166,75 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('locations.index')" :active="request()->routeIs('locations.index')">
+                {{ __('Location') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('channels.index')" :active="request()->routeIs('channels.index')">
+            {{ __('Channel') }}
+            </x-responsive-nav-link>
+
+                     <!--  
+                        <x-dropdown-link :href="route('day_months.index')">
+                                                {{ __('Day Month') }}
+                                            </x-dropdown-link>
+                        
+                        <x-dropdown-link :href="route('years.index')">
+                                                {{ __('Year') }}
+                                            </x-dropdown-link>
+                        
+                        <x-dropdown-link :href="route('load_limits.index')">
+                                                {{ __('Load Limit') }}
+                                            </x-dropdown-link>
+                        
+                        <x-dropdown-link :href="route('max_currents.index')">
+                                                {{ __('Max Current') }}
+                                            </x-dropdown-link>
+                        
+                        <x-dropdown-link :href="route('meter_locations.index')">
+                                                {{ __('Meter Location') }}
+                                            </x-dropdown-link>
+                        
+                        <x-dropdown-link :href="route('monthly_tariffs.index')">
+                                                {{ __('Monthly Tariff ') }}
+                                            </x-dropdown-link>
+                        
+                        <x-dropdown-link :href="route('monthly_whatts.index')">
+                                                {{ __('Monthly Whatt') }}
+                                            </x-dropdown-link>
+                        
+                        <x-dropdown-link :href="route('overload_delay_times.index')">
+                                                {{ __('OverLoad Delay Time') }}
+                                            </x-dropdown-link>
+                        
+                        <x-dropdown-link :href="route('tod_ones.index')">
+                                                {{ __('TOD One') }}
+                                            </x-dropdown-link>
+                        
+                        <x-dropdown-link :href="route('tod_twos.index')">
+                                                {{ __('TOD Two') }}
+                                            </x-dropdown-link>
+                        
+                        <x-dropdown-link :href="route('unbalance_currents.index')">
+                                                {{ __('Unbalance Current') }}
+                                            </x-dropdown-link>
+                    
+    
+    
+
+                        <x-dropdown-link :href="route('locations.index')">
+                            {{ __('Location') }}
+                        </x-dropdown-link>
+
+                       
+                        <x-dropdown-link :href="route('meters.index')">
+                            {{ __('Meter') }}
+                        </x-dropdown-link>-->
+
+
+
+
+
         </div>
 
         <!-- Responsive Settings Options -->
