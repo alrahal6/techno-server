@@ -310,9 +310,16 @@ class CommandGenerator {
         return sprintf('%04X', $crc);
     }
 
+    private function getMeterNumber($meterId) {
+        $meter = Meter::findOrFail($meterId);
+        return $meter->meter_number;
+    }
+
     public function saveCommand($meter,$command, $flag = "0") {
+        $cmd = str_replace(' ', '', $command);
+        $meterNumber = $this->getMeterNumber($meter);
         $sql = "INSERT INTO `meter_commands` (`meter`, `command`, `flag`)
-                VALUES ('".$meter."','".$command."','".$flag."')"; 
+                VALUES ('".$meterNumber."','".$cmd."','".$flag."')"; 
 
                 if($r = mysqli_query($this->db, $sql)) {
                     $response = $r;
@@ -326,6 +333,7 @@ class CommandGenerator {
                 if($r = mysqli_query($this->db, $sql)) {
                     $response = $r;
         }
+        $this->prepareAndSaveCommand($meter,$channel,$item,$value);
     }
 
     public function updateEntry($meter,$channel,$item,$value,$id) {
@@ -338,6 +346,7 @@ class CommandGenerator {
                 if($r = mysqli_query($this->db, $sql)) {
                     $response = $r;
         }
+        $this->prepareAndSaveCommand($meter,$channel,$item,$value);
     }
 
     public function deleteEntry($meter,$channel,$item) {
@@ -348,6 +357,68 @@ class CommandGenerator {
                         $response = $r;
             }
     }
+
+
+
+    public function prepareAndSaveCommand($meter,$channel,$item,$value) {
+        // switch to appropriate item
+        $command = "";
+        switch($item) {
+            case 1:
+                // day_month
+                $command = $this->entryDayMonth($channel,$value);
+                break;
+            case 2:
+                //year
+                $command = $this->entryYear($channel,$value);
+                break;
+            case 3:
+                //load_limit
+                $command = $this->entryLoadLimit($channel,$value);
+                break;
+            case 4:
+                //max_current
+                $command = $this->entryMaxCurrent($channel,$value);
+                break;
+            case 5:
+                //monthly_tariff
+                $command = $this->entryMonthlyTariff($channel,$value);
+                break;
+            case 6:
+                //monthly_watts
+                $command = $this->entryMonthlyWatts($channel,$value);
+                break;
+            case 7:
+                //overload_delay_time
+                $command = $this->entryOverloadDelayTime($channel,$value);
+                break;
+            case 8:
+                //tod_one_start
+                $command = $this->entryTodOneStart($channel,$value);
+                break;
+            case 9:
+                //tod_one_end
+                $command = $this->entryTodOneEnd($channel,$value);
+                break;
+            case 10:
+                //tod_two_start
+                $command = $this->entryTodTwoStart($channel,$value);
+                break;
+            case 11:
+                //tod_two_end
+                $command = $this->entryTodTwoEnd($channel,$value);
+                break;
+            case 12:
+                //unbalance_current
+                $command = $this->entryUnbalanceCurrent($channel,$value);
+                break;
+            default:
+            $command = "";
+                //
+        }
+        $this->saveCommand($meter,$command);
+    }
+
     
 
 }

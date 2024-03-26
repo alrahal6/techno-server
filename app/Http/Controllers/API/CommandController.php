@@ -11,7 +11,7 @@ class CommandController extends Controller
 {
 
     private $db;
-    private $commandGenerator;
+    protected $commandGenerator;
 
     public function __construct()
     {
@@ -260,7 +260,7 @@ class CommandController extends Controller
                     echo "Failed to connect with database" . mysqli_connect_error();
                 }
                 $this->commandGenerator->saveEntry($meter,$channel,$item,$value);
-                $this->prepareAndSaveCommand($meter,$channel,$item,$value); 
+                $this->commandGenerator->prepareAndSaveCommand($meter,$channel,$item,$value); 
             }
         }
         return response()->json($response);
@@ -269,7 +269,7 @@ class CommandController extends Controller
     
 
 
-    private function prepareAndSaveCommand($meter,$channel,$item,$value) {
+    /*private function prepareAndSaveCommand($meter,$channel,$item,$value) {
         // switch to appropriate item
         $command = "";
         switch($item) {
@@ -326,7 +326,7 @@ class CommandController extends Controller
                 //
         }
         $this->commandGenerator->saveCommand($meter,$command);
-    }
+    }*/
 
     
     
