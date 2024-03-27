@@ -31,6 +31,16 @@ class Tod_onesController extends Controller
         ['meters'=>Items::getMeter(),'channels' => Items::getChannel()]);
     }
 
+    private function saveEntry($request) {
+        $this->commandGenerator->saveEntry($request->input('meter_id'),$request->input('channel'),Items::$tod_one_start,$request->input('starttime'));
+        $this->commandGenerator->saveEntry($request->input('meter_id'),$request->input('channel'),Items::$tod_one_end,$request->input('endtime'));
+    }
+    
+    private function deleteEntry($request) {
+        $this->commandGenerator->deleteEntry($request->meter_id,$request->channel,Items::$tod_one_start);
+        $this->commandGenerator->deleteEntry($request->meter_id,$request->channel,Items::$tod_one_end);
+    }
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -45,7 +55,7 @@ class Tod_onesController extends Controller
 		$tod_one->starttime = $request->input('starttime');
 		$tod_one->endtime = $request->input('endtime');
         $tod_one->save();
-
+        $this->saveEntry($request);
         return to_route('tod_ones.index');
     }
 
@@ -84,12 +94,13 @@ class Tod_onesController extends Controller
     public function update(Tod_oneRequest $request, $id)
     {
         $tod_one = Tod_one::findOrFail($id);
+        $this->deleteEntry($tod_one);
 		$tod_one->meter_id = $request->input('meter_id');
 		$tod_one->channel = $request->input('channel');
 		$tod_one->starttime = $request->input('starttime');
 		$tod_one->endtime = $request->input('endtime');
         $tod_one->save();
-
+        $this->saveEntry($request);
         return to_route('tod_ones.index');
     }
 
@@ -102,8 +113,9 @@ class Tod_onesController extends Controller
     public function destroy($id)
     {
         $tod_one = Tod_one::findOrFail($id);
+        $this->deleteEntry($tod_one);
         $tod_one->delete();
-
+        
         return to_route('tod_ones.index');
     }
 }
