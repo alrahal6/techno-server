@@ -173,67 +173,45 @@
             <x-responsive-nav-link :href="route('channels.index')" :active="request()->routeIs('channels.index')">
             {{ __('Channel') }}
             </x-responsive-nav-link>
-
-                     <!--  
-                        <x-dropdown-link :href="route('day_months.index')">
-                                                {{ __('Day Month') }}
-                                            </x-dropdown-link>
-                        
-                        <x-dropdown-link :href="route('years.index')">
-                                                {{ __('Year') }}
-                                            </x-dropdown-link>
-                        
-                        <x-dropdown-link :href="route('load_limits.index')">
-                                                {{ __('Load Limit') }}
-                                            </x-dropdown-link>
-                        
-                        <x-dropdown-link :href="route('max_currents.index')">
-                                                {{ __('Max Current') }}
-                                            </x-dropdown-link>
-                        
-                        <x-dropdown-link :href="route('meter_locations.index')">
-                                                {{ __('Meter Location') }}
-                                            </x-dropdown-link>
-                        
-                        <x-dropdown-link :href="route('monthly_tariffs.index')">
-                                                {{ __('Monthly Tariff ') }}
-                                            </x-dropdown-link>
-                        
-                        <x-dropdown-link :href="route('monthly_whatts.index')">
-                                                {{ __('Monthly Whatt') }}
-                                            </x-dropdown-link>
-                        
-                        <x-dropdown-link :href="route('overload_delay_times.index')">
-                                                {{ __('OverLoad Delay Time') }}
-                                            </x-dropdown-link>
-                        
-                        <x-dropdown-link :href="route('tod_ones.index')">
-                                                {{ __('TOD One') }}
-                                            </x-dropdown-link>
-                        
-                        <x-dropdown-link :href="route('tod_twos.index')">
-                                                {{ __('TOD Two') }}
-                                            </x-dropdown-link>
-                        
-                        <x-dropdown-link :href="route('unbalance_currents.index')">
-                                                {{ __('Unbalance Current') }}
-                                            </x-dropdown-link>
-                    
-    
-    
-
-                        <x-dropdown-link :href="route('locations.index')">
-                            {{ __('Location') }}
-                        </x-dropdown-link>
-
-                       
-                        <x-dropdown-link :href="route('meters.index')">
-                            {{ __('Meter') }}
-                        </x-dropdown-link>-->
-
-
-
-
+            <x-responsive-nav-link :href="route('day_months.index')" :active="request()->routeIs('day_months.index')">
+            {{ __('Day Month') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('years.index')" :active="request()->routeIs('years.index')">
+            {{ __('Year') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('load_limits.index')" :active="request()->routeIs('load_limits.index')">
+            {{ __('Load Limit') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('max_currents.index')" :active="request()->routeIs('max_currents.index')">
+            {{ __('Max Current') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('meter_locations.index')" :active="request()->routeIs('meter_locations.index')">
+            {{ __('Meter Location') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('monthly_tariffs.index')" :active="request()->routeIs('monthly_tariffs.index')">
+            {{ __('Monthly Tariff') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('monthly_whatts.index')" :active="request()->routeIs('monthly_whatts.index')">
+            {{ __('Monthly Whatt') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('overload_delay_times.index')" :active="request()->routeIs('overload_delay_times.index')">
+            {{ __('Overload Delay Time') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('tod_ones.index')" :active="request()->routeIs('tod_ones.index')">
+            {{ __('TOD One') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('tod_twos.index')" :active="request()->routeIs('tod_twos.index')">
+            {{ __('TOD Two') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('unbalance_currents.index')" :active="request()->routeIs('unbalance_currents.index')">
+            {{ __('Unbalance Current') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('locations.index')" :active="request()->routeIs('locations.index')">
+            {{ __('Location') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('meters.index')" :active="request()->routeIs('meters.index')">
+            {{ __('Meter') }}
+            </x-responsive-nav-link>
 
         </div>
 
