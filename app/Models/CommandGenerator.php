@@ -104,7 +104,7 @@ class CommandGenerator {
         return "";
     }
 
-    private function getPkgStTimeCommand($time,$ch) {
+    private function getPkgStTimeCommand($ch,$time) {
         //setTodWriteString
         if(!$ch) {
             return "";
@@ -115,8 +115,8 @@ class CommandGenerator {
         }
         return "";
     }
-
-    private function getPkgEdTimeCommand($time,$ch) {
+    
+    private function getPkgEdTimeCommand($ch,$time) {
         if(!$ch) {
             return "";
         }
@@ -127,7 +127,7 @@ class CommandGenerator {
         //return $pkgEdTime;
     }
 
-    private function getPkgTwoStTimeCommand($time,$ch) {
+    private function getPkgTwoStTimeCommand($ch,$time) {
         //setTodWriteString
         if(!$ch) {
             return "";
@@ -139,7 +139,7 @@ class CommandGenerator {
         return "";
     }
 
-    private function getPkgTwoEdTimeCommand($time,$ch) {
+    private function getPkgTwoEdTimeCommand($ch,$time) {
         if(!$ch) {
             return "";
         }
