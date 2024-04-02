@@ -23,7 +23,8 @@ class ConnectionRequest extends FormRequest
      */
     public function rules()
     {
-        return
+        return[];
+        /*return
         [
 			'number_of_meters' => 'required',
 			'location_id' => 'required',
@@ -32,6 +33,6 @@ class ConnectionRequest extends FormRequest
 			'connection_status' => 'required',
 			'admin_name' => 'required',
 			'amc_duration' => 'required',
-        ];
+        ];*/
     }
 }

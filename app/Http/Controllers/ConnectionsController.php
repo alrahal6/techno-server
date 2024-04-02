@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Connection;
 use App\Http\Requests\ConnectionRequest;
+use App\Models\ConnectionReport;
 
 class ConnectionsController extends Controller
 {
@@ -109,5 +110,22 @@ class ConnectionsController extends Controller
         $connection->delete();
 
         return to_route('connections.index');
+    }
+
+    public function connect() {
+        //$connections= Connection::all();
+        //return view('connections.index', ['connections'=>$connections]);
+        return view('connections.connect');
+    }
+
+    public function report(ConnectionRequest $request)
+    {
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
+        
+        // Filter data based on date range
+        $reportData = ConnectionReport::filterByDateRange($startDate, $endDate)->get();
+
+        return view('connections.report', compact('reportData'));
     }
 }
