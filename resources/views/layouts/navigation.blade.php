@@ -127,17 +127,17 @@
                         <x-dropdown-link :href="route('connections.index')">
                             {{ __('Connections') }}
                         </x-dropdown-link>
-                        <x-dropdown-link :href="route('meterservices.index')">
+                        <x-dropdown-link :href="route('meter_services.index')">
                             {{ __('Meter Service') }}
                         </x-dropdown-link>
-                        <x-dropdown-link :href="route('connectionstatus.index')">
+                        <x-dropdown-link :href="route('connection_statuses.index')">
                             {{ __('Connection Status') }}
                         </x-dropdown-link>
-                        <x-dropdown-link :href="route('servicestatus.index')">
+                        <x-dropdown-link :href="route('service_statuses.index')">
                             {{ __('Service Status') }}
                         </x-dropdown-link>
                         
-                        <x-dropdown-link :href="route('servicestatus.index')">
+                        <x-dropdown-link :href="route('connections.connect')">
                             {{ __('Service Report') }}
                         </x-dropdown-link>
                     </x-slot>

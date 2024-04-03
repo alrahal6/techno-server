@@ -54,17 +54,18 @@ Route::group(['middleware' => ['role:super-admin|admin']], function() {
     Route::resource('users', App\Http\Controllers\UserController::class);
     Route::get('users/{userId}/delete', [App\Http\Controllers\UserController::class, 'destroy']);
 
-    Route::resource('connections', App\Http\Controllers\ConnectionsController::class);
-    Route::resource('servicestatus', App\Http\Controllers\Service_statusesController::class);
-    Route::resource('connectionstatus', App\Http\Controllers\Connection_statusesController::class);
-    Route::resource('meterservices', App\Http\Controllers\Meter_servicesController::class);
-
     Route::get('/connect', [ConnectionsController::class,'connect'])->name('connections.connect');
     Route::post('/report', [ConnectionsController::class,'report'])->name('connections.report');
     //Route::get('/report', 'ReportController@index')->name('report.index');
     //Route::post('/report', 'ReportController@show')->name('report.show');
     //Route::resource('report', App\Http\Controllers\ReportController::class);
     //Route::resource('meterservices', App\Http\Controllers\Meter_servicesController::class); 
+
+    Route::resource('/connections', App\Http\Controllers\ConnectionsController::class);
+    Route::resource('/service_statuses', App\Http\Controllers\Service_statusesController::class);
+    Route::resource('/connection_statuses', App\Http\Controllers\Connection_statusesController::class);
+    Route::resource('/meter_services', App\Http\Controllers\Meter_servicesController::class);
+
 
 });
 
@@ -89,6 +90,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('/tod_twos', Tod_twosController::class); 
     Route::resource('/unbalance_currents', Unbalance_currentsController::class); 
     Route::resource('/years', YearsController::class);
+
+   
 
 });
 

@@ -8,7 +8,8 @@
     <input type="date" id="start_date" name="start_date">
     <label for="end_date">End Date:</label>
     <input type="date" id="end_date" name="end_date">
-    <button type="submit">Generate Report</button>
+    <br/><br/>
+    <button text-align="center" type="submit">Generate Report</button>
 </form>
 
 @stop
