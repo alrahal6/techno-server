@@ -124,8 +124,9 @@ class ConnectionsController extends Controller
         $endDate = $request->input('end_date');
         
         // Filter data based on date range
-        //$reportData = ConnectionReport::filterByDateRange($startDate, $endDate)->get();
-        $reportData = array();
+        $reportData = Connection::all();// ConnectionReport::filterByDateRange($startDate, $endDate)->get();
+        //$reportData = array();
+        //dump($reportData);
         return view('connections.report', compact('reportData'));
     }
 }

@@ -6,20 +6,20 @@
     <thead>
         <tr>
             <th>Date</th>
-            <th>Active Connections</th>
-            <th>New Connections</th>
-            <th>Total Connections</th>
+            <th>Number Of Meters</th>
+            <th>Connaction Status</th>
+            <th>Amc Amount</th>
             <th>AMC Duration/Charges</th>
         </tr>
     </thead>
     <tbody>
         @foreach($reportData as $data)
             <tr>
-                <td>{{ $data['date'] }}</td>
-                <td>{{ $data['active_connections'] }}</td>
-                <td>{{ $data['new_connections'] }}</td>
-                <td>{{ $data['total_connections'] }}</td>
-                <td>{{ $data['amc_duration_charges'] }}</td>
+                <td>{{ $data['connection_date'] }}</td>
+                <td>{{ $data['number_of_meters'] }}</td>
+                <td>{{ $data['connection_status'] }}</td>
+                <td>{{ $data['amc_per_connaction'] }}</td>
+                <td>{{ $data['amc_duration'] }}</td>
             </tr>
         @endforeach
     </tbody>

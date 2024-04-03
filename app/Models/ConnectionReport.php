@@ -9,9 +9,12 @@ class ConnectionReport extends Model
 {
     use HasFactory;
 
+    protected $table = 'connections';
+
     public static function filterByDateRange($startDate, $endDate)
     {
-        return self::whereBetween('connection_date', [$startDate, $endDate]);
+        //return self::whereBetween('connection_date', [$startDate, $endDate]);
+        return Connection::all();
     }
 
 }

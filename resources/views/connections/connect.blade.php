@@ -9,7 +9,7 @@
     <label for="end_date">End Date:</label>
     <input type="date" id="end_date" name="end_date">
     <br/><br/>
-    <button text-align="center" type="submit">Generate Report</button>
+    <div text-align="center"><button type="submit">Generate Report</button></div>
 </form>
 
 @stop
